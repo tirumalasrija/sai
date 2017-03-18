@@ -1,0 +1,473 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Volunteer</title>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no"/>
+
+<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="css/grid.css">
+<link rel="stylesheet" href="css/google-map.css">
+<link rel="stylesheet" href="css/search.css">
+<link rel="stylesheet" href="css/subscribe-form.css">
+<link rel="stylesheet" href="css/jquery.fancybox.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/forum.css">
+<link rel="stylesheet" href="css/custom.css">
+<link rel="stylesheet" href="css/font-awesome.css">
+<script src="js/jquery.js"></script>
+<script src="js/jquery-migrate-1.2.1.js"></script>
+
+<script src='js/device.min.js'></script>
+<script>
+(function($) {
+    "use strict";
+	
+	// Options for Message
+	//----------------------------------------------
+  var options = {
+	  'btn-loading': '<i class="fa fa-spinner fa-pulse"></i>',
+	  'btn-success': '<i class="fa fa-check"></i>',
+	  'btn-error': '<i class="fa fa-remove"></i>',
+	  'msg-success': 'All Good! Redirecting...',
+	  'msg-error': 'Wrong login credentials!',
+	  'useAJAX': true,
+  };
+
+	// Login Form
+	//----------------------------------------------
+	// Validation
+  $("#login-form").validate({
+  	rules: {
+      lg_username: "required",
+  	  lg_password: "required",
+    },
+  	errorClass: "form-invalid"
+  });
+  
+	// Form Submission
+  $("#login-form").submit(function() {
+  	remove_loading($(this));
+		
+		if(options['useAJAX'] == true)
+		{
+			// Dummy AJAX request (Replace this with your AJAX code)
+		  // If you don't want to use AJAX, remove this
+  	  dummy_submit_form($(this));
+		
+		  // Cancel the normal submission.
+		  // If you don't want to use AJAX, remove this
+  	  return false;
+		}
+  });
+	
+	// Register Form
+	//----------------------------------------------
+	// Validation
+  $("#register-form").validate({
+  	rules: {
+      reg_username: "required",
+  	  reg_password: {
+  			required: true,
+  			minlength: 5
+  		},
+   		reg_password_confirm: {
+  			required: true,
+  			minlength: 5,
+  			equalTo: "#register-form [name=reg_password]"
+  		},
+  		reg_email: {
+  	    required: true,
+  			email: true
+  		},
+  		reg_agree: "required",
+    },
+	  errorClass: "form-invalid",
+	  errorPlacement: function( label, element ) {
+	    if( element.attr( "type" ) === "checkbox" || element.attr( "type" ) === "radio" ) {
+    		element.parent().append( label ); // this would append the label after all your checkboxes/labels (so the error-label will be the last element in <div class="controls"> )
+	    }
+			else {
+  	  	label.insertAfter( element ); // standard behaviour
+  	  }
+    }
+  });
+
+  // Form Submission
+  $("#register-form").submit(function() {
+  	remove_loading($(this));
+		
+		if(options['useAJAX'] == true)
+		{
+			// Dummy AJAX request (Replace this with your AJAX code)
+		  // If you don't want to use AJAX, remove this
+  	  dummy_submit_form($(this));
+		
+		  // Cancel the normal submission.
+		  // If you don't want to use AJAX, remove this
+  	  return false;
+		}
+  });
+
+	// Forgot Password Form
+	//----------------------------------------------
+	// Validation
+  $("#forgot-password-form").validate({
+  	rules: {
+      fp_email: "required",
+    },
+  	errorClass: "form-invalid"
+  });
+  
+	// Form Submission
+  $("#forgot-password-form").submit(function() {
+  	remove_loading($(this));
+		
+		if(options['useAJAX'] == true)
+		{
+			// Dummy AJAX request (Replace this with your AJAX code)
+		  // If you don't want to use AJAX, remove this
+  	  dummy_submit_form($(this));
+		
+		  // Cancel the normal submission.
+		  // If you don't want to use AJAX, remove this
+  	  return false;
+		}
+  });
+
+	// Loading
+	//----------------------------------------------
+  function remove_loading($form)
+  {
+  	$form.find('[type=submit]').removeClass('error success');
+  	$form.find('.login-form-main-message').removeClass('show error success').html('');
+  }
+
+  function form_loading($form)
+  {
+    $form.find('[type=submit]').addClass('clicked').html(options['btn-loading']);
+  }
+  
+  function form_success($form)
+  {
+	  $form.find('[type=submit]').addClass('success').html(options['btn-success']);
+	  $form.find('.login-form-main-message').addClass('show success').html(options['msg-success']);
+  }
+
+  function form_failed($form)
+  {
+  	$form.find('[type=submit]').addClass('error').html(options['btn-error']);
+  	$form.find('.login-form-main-message').addClass('show error').html(options['msg-error']);
+  }
+
+	// Dummy Submit Form (Remove this)
+	//----------------------------------------------
+	// This is just a dummy form submission. You should use your AJAX function or remove this function if you are not using AJAX.
+  function dummy_submit_form($form)
+  {
+  	if($form.valid())
+  	{
+  		form_loading($form);
+  		
+  		setTimeout(function() {
+  			form_success($form);
+  		}, 2000);
+  	}
+  }
+	
+})(jQuery);
+</script>
+</head>
+<body>
+<div class="page">
+ 
+<header class="abs">
+<div id="stuck_container" class="stuck_container">
+<div class="container">
+<div class="brand">
+<h1 class="brand_name">
+<a href="index.html"><img src="images/logo.png"></a>
+</h1>
+</div>
+<div class="header-right">
+<nav class="nav">
+<ul class="sf-menu" data-type="navbar">
+<li class="">
+<a href="index.html"><span>Home</span></a>
+</li>
+<li>
+<a href="forum.html"><span>Forums</span></a>
+</li>
+<li>
+<a href="contact.html"><span>Contact</span></a>
+
+</li>
+<li>
+<a href="login.html"><span>Login/Register</span></a>
+</li>
+
+</ul>
+</nav>
+
+</div>
+</div>
+</div>
+</header>
+ 
+<main>
+<section class="parallax1" data-url="images/parallax2.jpg" style="background-image: url(images/parallax5.jpg);">
+
+</section>
+
+    <section id="blog-post" class="testimonials_v2">
+        <div class="container">
+            <div class="row">
+			 <div class="about_our_company" style="margin-bottom: 20px;">
+                        <h1 style="color:#f7941d;">People Experiences</h1>
+                        <div class="titleline-icon"></div>
+                        <p style="color:#8c8c8c;">Lorem Ipsum is simply dummy text of the printing and typesetting </p>
+                    </div>
+                <!-- .Testimonial-content -->
+                <div class="col-lg-12 col-md-12 testimonials_v2_content" id="testimonials">
+                    <div class="col-lg-6 col-md-6 col-sm-6 wow bounceInLeft hvr-float-shadow single-testimoinal-wrap">
+                        <!-- .single-testimonial -->
+                        <div class="single-testimonial ">
+                            <div class="profile-info pull-left">
+                                <img src="images/male.png" alt="">
+                                <h2>merry Smith</h2>
+                            </div>
+                            <div class="content pull-left">
+                                <p><i class="fa fa-quote-left"></i> Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione volupt atem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.</p>
+                            </div>
+                        </div> <!-- /.single-testimonial -->
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 wow bounceInLeft hvr-float-shadow single-testimoinal-wrap">
+                        <!-- .single-testimonial -->
+                        <div class="single-testimonial ">
+                            <div class="profile-info pull-left">
+                                <img src="images/female.png" alt="">
+                                <h2>merry Smith</h2>
+                            </div>
+                            <div class="content pull-left">
+                                <p><i class="fa fa-quote-left"></i> Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione volupt atem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.</p>
+                            </div>
+                        </div> <!-- /.single-testimonial -->
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 wow bounceInLeft hvr-float-shadow single-testimoinal-wrap">
+                        <!-- .single-testimonial -->
+                        <div class="single-testimonial ">
+                            <div class="profile-info pull-left">
+                                <img src="images/male.png" alt="">
+                                <h2>merry Smith</h2>
+                            </div>
+                            <div class="content pull-left">
+                                <p><i class="fa fa-quote-left"></i> Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione volupt atem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.</p>
+                            </div>
+                        </div> <!-- /.single-testimonial -->
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 wow bounceInLeft hvr-float-shadow single-testimoinal-wrap">
+                        <!-- .single-testimonial -->
+                        <div class="single-testimonial ">
+                            <div class="profile-info pull-left">
+                                <img src="images/male.png" alt="">
+                                <h2>merry Smith</h2>
+                            </div>
+                            <div class="content pull-left">
+                                <p><i class="fa fa-quote-left"></i> Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione volupt atem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.</p>
+                            </div>
+                        </div> <!-- /.single-testimonial -->
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 wow bounceInLeft hvr-float-shadow single-testimoinal-wrap">
+                        <!-- .single-testimonial -->
+                        <div class="single-testimonial ">
+                            <div class="profile-info pull-left">
+                                <img src="images/female.png" alt="">
+                                <h2>merry Smith</h2>
+                            </div>
+                            <div class="content pull-left">
+                                <p><i class="fa fa-quote-left"></i> Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione volupt atem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.</p>
+                            </div>
+                        </div> <!-- /.single-testimonial -->
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 wow bounceInLeft hvr-float-shadow single-testimoinal-wrap">
+                        <!-- .single-testimonial -->
+                        <div class="single-testimonial ">
+                            <div class="profile-info pull-left">
+                                <img src="images/male.png" alt="">
+                                <h2>merry Smith</h2>
+                            </div>
+                            <div class="content pull-left">
+                                <p><i class="fa fa-quote-left"></i> Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione volupt atem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.</p>
+                            </div>
+                        </div> <!-- /.single-testimonial -->
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 wow bounceInLeft hvr-float-shadow single-testimoinal-wrap">
+                        <!-- .single-testimonial -->
+                        <div class="single-testimonial ">
+                            <div class="profile-info pull-left">
+                                <img src="images/female.png" alt="">
+                                <h2>merry Smith</h2>
+                            </div>
+                            <div class="content pull-left">
+                                <p><i class="fa fa-quote-left"></i> Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione volupt atem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.</p>
+                            </div>
+                        </div> <!-- /.single-testimonial -->
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 wow bounceInLeft hvr-float-shadow single-testimoinal-wrap">
+                        <!-- .single-testimonial -->
+                        <div class="single-testimonial ">
+                            <div class="profile-info pull-left">
+                                <img src="images/female.png" alt="">
+                                <h2>merry Smith</h2>
+                            </div>
+                            <div class="content pull-left">
+                                <p><i class="fa fa-quote-left"></i> Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione volupt atem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.</p>
+                            </div>
+                        </div> <!-- /.single-testimonial -->
+                    </div>
+
+
+                </div> <!-- /.Testimonials-V1 -->
+                <br>
+                <!-- Theme Pagination -->
+                <div class="col-lg-12 theme-pagination text-center">
+                    <ul>
+                        <li><a href="#"><span class="flaticon-left222"></span>&ensp;Prev</a></li>
+                        <li><a href="#" class="active">01</a></li>
+                        <li><a href="#">02</a></li>
+                        <li><a href="#">....</a></li>
+                        <li><a href="#">10</a></li>
+                        <li><a href="#">11</a></li>
+                        <li><a href="#">Next&ensp;<span class="flaticon-right11"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+ <section class="contact-section">
+        <div class="auto-container">
+            <div class="sec-title">
+                <h2>Share your Experience with<strong> us</strong></h2>
+            </div>
+            <div class="sec-text">
+                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. <br>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+            </div>
+            <div class="form">
+                
+                <form id="" method="" action="#">
+                    <div class="row clearfix">
+                        <div class="form-group col-md-4 col-sm-6 col-xs-12">
+                            <div class="form-group-inner">
+                                <div class="icon-box"><label for="your-name"><span class="icon flaticon-user168"></span></label></div>
+                                <div class="field-outer">
+                                    <input type="text" name="username" id="your-name" placeholder="First Last Names">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4 col-sm-6 col-xs-12">
+                            <div class="form-group-inner">
+                                <div class="icon-box"><label for="your-email"><span class="icon flaticon-new100"></span></label></div>
+                                <div class="field-outer">
+                                    <input type="email" name="email" id="your-email" placeholder="Email">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4 col-sm-12 col-xs-12">
+                            <div class="form-group-inner">
+                                <div class="icon-box"><label for="your-subject"><span class="icon flaticon-edition2"></span></label></div>
+                                <div class="field-outer">
+                                    <select class="form-control">
+                                        <option value="0" selected>SEX</option>
+                                        <option value="1">Male</option>
+                                        <option value="2">Female</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group-inner">
+                                <textarea name="message" placeholder="Your Message"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group col-md-12 col-sm-12 col-xs-12 text-center">
+                            <button type="submit" name="submit-form" data-toggle="modal" data-target="#myModal">Submit <span class="icon flaticon-envelope32"></span></button>
+                        </div>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+    </section>
+    
+<footer>
+
+<section class="footer-top parallax" data-url="images/parallax3.jpg" style="background-image: url(images/parallax4.jpg)">
+<div class="container">
+<div class="row">
+<div class="col-xs-12 col-sm-4">
+<h3>Sign up for updates</h3>
+<form id="subscribe-form" class="subscribe-form">
+<label class="name">
+<input type="text" value="Name"/>
+<span class="error">*Invalid name.</span>
+</label>
+<label class="email">
+<input type="email" value="Email">
+<span class="error">*Invalid email.</span>
+<span class="success">Subscription request sent!</span>
+</label>
+<a data-type="submit" href="#">Sign up</a>
+</form>
+</div>
+<div class="col-xs-12 col-sm-offset-1 col-sm-3">
+<h3>Find us</h3>
+<address class="addr">
+<p>8901 Marmora Road<br>Glasgow, DO4 89GR.</p>
+<dl>
+<dt>Freephone:</dt>
+<dd><a href="callto:#">+1 800 559 6580</a></dd>
+</dl>
+<dl>
+<dt>Telephone:</dt>
+<dd><a href="callto:#">+1 959 603 6035</a></dd>
+</dl>
+<dl>
+<dt>FAX:</dt>
+<dd><a href="callto:#">+1 800 889 9898</a></dd>
+</dl>
+<p class="addr_email">E-mail: <a href="/cdn-cgi/l/email-protection#2605"><span class="__cf_email__" data-cfemail="731e121a1f3317161e1c1f1a1d185d1c0114">[email&#160;protected]</span><script data-cfhash='f9e31' type="text/javascript">/* <![CDATA[ */!function(t,e,r,n,c,a,p){try{t=document.currentScript||function(){for(t=document.getElementsByTagName('script'),e=t.length;e--;)if(t[e].getAttribute('data-cfhash'))return t[e]}();if(t&&(c=t.previousSibling)){p=t.parentNode;if(a=c.getAttribute('data-cfemail')){for(e='',r='0x'+a.substr(0,2)|0,n=2;a.length-n;n+=2)e+='%'+('0'+('0x'+a.substr(n,2)^r).toString(16)).slice(-2);p.replaceChild(document.createTextNode(decodeURIComponent(e)),c)}p.removeChild(t)}}catch(u){}}()/* ]]> */</script></a></p>
+</address>
+</div>
+<div class="col-xs-12 col-sm-4">
+<h3>Keep in touch</h3>
+<ul class="social-list">
+<li><a href="#"><span class="fa fa-google-plus"></span></a></li>
+<li><a href="#"><span class="fa fa-twitter"></span></a></li>
+<li><a href="#"><span class="fa fa-facebook"></span></a></li>
+<li><a href="#"><span class="fa fa-pinterest"></span></a></li>
+<li><a href="#"><span class="fa fa-linkedin"></span></a></li>
+</ul>
+
+</div>
+</div>
+</div>
+
+</section>
+
+</footer>
+
+</div>
+<script src="js/script.js"></script>
+<script type="text/javascript">
+ var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7078796-5']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'https://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();</script>
+<script>(function(d,s,a,i,j,r,l,m,t){try{l=d.getElementsByTagName('a');t=d.createElement('textarea');for(i=0;l.length-i;i++){try{a=l[i].href;s=a.indexOf('/cdn-cgi/l/email-protection');m=a.length;if(a&&s>-1&&m>28){j=28+s;s='';if(j<m){r='0x'+a.substr(j,2)|0;for(j+=2;j<m&&a.charAt(j)!='X';j+=2)s+='%'+('0'+('0x'+a.substr(j,2)^r).toString(16)).slice(-2);j++;s=decodeURIComponent(s)+a.substr(j,m-j)}t.innerHTML=s.replace(/</g,'&lt;').replace(/\>/g,'&gt;');l[i].href='mailto:'+t.value}}catch(e){}}}catch(e){}})(document);/* ]]> */</script></body> <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-P9FT69"height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P9FT69');</script><!-- End Google Tag Manager -->
+</html>

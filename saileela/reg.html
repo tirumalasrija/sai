@@ -1,0 +1,151 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<title>SaiLeela</title>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="css/grid.css">
+
+<!--<link rel="stylesheet" href="css/subscribe-form.css">
+<link rel="stylesheet" href="css/jquery.fancybox.css">-->
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/custom.css">
+<link rel="stylesheet" href="css/font-awesome.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/jquery-migrate-1.2.1.js"></script>
+<script src='js/device.min.js'></script>
+<style>
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  letter-spacing: .5px;
+}
+h1 {
+  font-family: 'Roboto Condensed', sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+header {
+  position: relative;
+  background-size: cover;
+  background-color: #7d6060;
+  background-position: center;
+  padding-top: 300px;
+  padding-bottom: 300px;
+}
+.overlay {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.navbar {
+  position: absolute;
+  width: 100%;
+  top: 0px;
+  margin-bottom: 0px;
+  border-radius: 0px;
+  background-color: transparent;
+  border: transparent;
+  -webkit-transition: all ease-in-out 0.4s;
+  -moz-transition: all ease-in-out 0.4s;
+  -o-transition: all ease-in-out 0.4s;
+  transition: all ease-in-out 0.4s;
+}
+.navbar-default .navbar-nav > li > a:hover {
+  color: #fff;
+  background-color: transparent;
+}
+.navbar-nav > li > a {
+  text-transform: uppercase;
+  line-height: 42px;
+  -webkit-transition: all ease-in-out 0.4s;
+  -moz-transition: all ease-in-out 0.4s;
+  -o-transition: all ease-in-out 0.4s;
+  transition: all ease-in-out 0.4s;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #fff;
+  font-size: 13.5px;
+}
+.navbar-brand {
+  padding: 10px 15px;
+}
+.navbar-brand img {
+  width: 200px;
+}
+.shrink-nav {
+  color: #000 !important;
+  top: 0px;
+  background-color: #fff;
+  position: fixed;
+}
+.shrink-nav .navbar-nav > li > a {
+  color: #000 !important;
+  line-height: 24px;
+}
+@media (max-width: 767px) {
+  .navbar-nav > li > a {
+    line-height: 20px;
+  }
+  .navbar-brand {
+    padding: 7px 15px;
+  }
+  .navbar-brand img {
+    width: 144px;
+  }
+}
+
+</style>
+</head>
+<body>
+ <header>
+      <div class="overlay"></div>
+      <!-- navigation -->
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><img src="assets/img/logo.jpg"></a>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#">home</a></li>
+              <li><a href="#">about</a></li>
+              <li><a href="#">services</a></li>
+              <li><a href="#">support</a></li>
+              <li><a href="#">plans&pricing</a></li>
+              <li><a href="#">disclaimer</a></li>
+              <li><a href="#">policy</a></li>
+              <li><a href="#">contact</a></li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav><!-- /navigation -->
+    </header>
+    <script type="text/javascript">
+      $(window).scroll(function(){
+        var wscroll = $(this).scrollTop();
+        if(wscroll > 50){
+         $(".navbar").addClass("shrink-nav");
+        }
+        else{
+          $(".navbar").removeClass("shrink-nav");
+        }
+      });
+    </script>
+</body>
+</html>
