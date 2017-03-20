@@ -1,0 +1,444 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>SaiLeela</title>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="css/grid.css">
+
+<!--<link rel="stylesheet" href="css/subscribe-form.css">
+<link rel="stylesheet" href="css/jquery.fancybox.css">-->
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/custom.css">
+<link rel="stylesheet" href="css/font-awesome.css">
+<link rel="stylesheet" href="css/settings.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/jquery-migrate-1.2.1.js"></script>
+<script src='js/device.min.js'></script>
+<script type="text/javascript" src="js/jquery.themepunch.tools.min.js"></script>
+    <script type="text/javascript" src="js/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript" src="js/slider-setting.js"></script>
+    <script type="text/javascript" src="js/revolution.extension.slideanims.min.js"></script>
+	<script type="text/javascript" src="js/revolution.extension.layeranimation.min.js"></script>
+     <script type="text/javascript" src="js/revolution.extension.parallax.min.js"></script>
+    <script type="text/javascript" src="js/revolution.extension.navigation.min.js"></script>
+<style type="text/css">
+
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-y: scroll; 
+}
+
+body {
+  background:#c1bdba;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+a {
+  text-decoration:none;
+  color:#00aeef;
+  transition:.5s ease;
+  &:hover {
+    color:#00aeef;
+  }
+}
+
+.form {
+  background:#fff;
+  padding: 40px;
+  max-width:600px;
+  margin:40px auto;
+  border-radius:4px;
+  box-shadow:0 4px 10px 4px rgba(19, 35, 47, 0.3);
+}
+
+.tab-group {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px 0;
+  }
+  .tab-group li a {
+    display: block;
+    text-decoration: none;
+    padding: 15px;
+    background: rgba(160, 179, 176, 0.25);
+    color: #a0b3b0;
+    font-size: 20px;
+    float: left;
+    width: 50%;
+    text-align: center;
+    cursor: pointer;
+    -webkit-transition: .5s ease;
+    transition: .5s ease;
+  .active a {
+    background:#00aeef;
+    color:#ffffff;
+  }
+}
+.tab-group .active a {
+    background: #00aeef;
+    color: #ffffff;
+}
+.tab-content > div:last-child {
+  display:none;
+}
+
+
+h1 {
+    text-align: center;
+    color: #000;
+    font-weight: 300;
+    margin: 0 0 40px;
+    line-height: 2em;
+}
+
+
+label {
+  position:absolute;
+  transform:translateY(6px);
+  left:13px;
+  color:rgba(#ffffff,.5);
+  transition:all 0.25s ease;
+  -webkit-backface-visibility: hidden;
+  pointer-events: none;
+  font-size:22px;
+  .req {
+    margin:2px;
+    color:#00aeef;
+  }
+}
+
+label.active {
+  transform:translateY(50px);
+  left:2px;
+  font-size:14px;
+  .req {
+    opacity:0;
+  }
+}
+
+label.highlight {
+  color:#ffffff;
+}
+
+input, textarea {
+  font-size:22px;
+  display:block;
+  width:100%;
+  height:100%;
+  padding:5px 10px;
+  background:none;
+  background-image:none;
+  border:1px solid #a0b3b0;
+  color:#000;
+  border-radius:0;
+  transition:border-color .25s ease, box-shadow .25s ease;
+  &:focus {
+    outline:0;
+    border-color:#00aeef;
+  }
+}
+
+textarea {
+  border:2px solid #a0b3b0;
+  resize: vertical;
+}
+
+.field-wrap {
+  position:relative;
+  margin-bottom:40px;
+}
+
+.top-row {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  > div {
+    float:left;
+    width:48%;
+    margin-right:4%;
+    &:last-child { 
+      margin:0;
+    }
+  }
+}
+
+.button {
+  border:0;
+  outline:none;
+  border-radius:0;
+  padding:15px 0;
+  font-size:2rem;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  background:#00aeef;
+  color:#ffffff;
+  transition:all.5s ease;
+  -webkit-appearance: none;
+  &:hover, &:focus {
+    background:#00aeef;
+  }
+}
+
+.button-block {
+  display:block;
+  width:100%;
+}
+
+.forgot {
+  margin-top:-20px;
+  text-align:right;
+}
+
+</style>
+</head>
+<body>
+<div class="page"> 
+<script>
+$('#mainNav').affix({
+  offset: {
+    top: 100
+  }
+})
+</script>
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">SAILEELA</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="index.html">Home</a>
+        </li>
+        <li>
+          <a href="about.html">About</a>
+        </li>
+        <li>
+          <a href="forum.html">Forums</a>
+        </li>
+        <li>
+          <a href="contact.html">Ask for Help</a>
+        </li>
+          <li>
+          <a href="login.html">Login/Register</a>
+        </li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container -->
+</nav>
+<div class="parallax">
+ <div class="container">
+				<div class="col-xs-12 col-sm-offset-1 col-sm-10">
+					<h2 class="heading">SAILEELA</h2>
+				</div>
+			</div>
+</div>
+<div class="form">
+      
+      <ul class="tab-group">
+        <li class="tab active"><a href="#signup">Sign Up</a></li>
+        <li class="tab"><a href="#login">Log In</a></li>
+      </ul>
+      
+      <div class="tab-content">
+        <div id="signup">   
+          <h1>Sign Up for Free</h1>
+          
+          <form action="/" method="post">
+          
+          <div class="top-row">
+            <div class="field-wrap">
+              <label>
+                First Name<span class="req">*</span>
+              </label>
+              <input type="text" required autocomplete="off" />
+            </div>
+        
+            <div class="field-wrap">
+              <label>
+                Last Name<span class="req">*</span>
+              </label>
+              <input type="text"required autocomplete="off"/>
+            </div>
+          </div>
+
+          <div class="field-wrap">
+            <label>
+              Email Address<span class="req">*</span>
+            </label>
+            <input type="email"required autocomplete="off"/>
+          </div>
+          
+          <div class="field-wrap">
+            <label>
+              Set A Password<span class="req">*</span>
+            </label>
+            <input type="password"required autocomplete="off"/>
+          </div>
+          
+          <button type="submit" class="button button-block"/>Get Started</button>
+          
+          </form>
+
+        </div>
+        
+        <div id="login">   
+          <h1>Welcome Back!</h1>
+          
+          <form action="/" method="post">
+          
+            <div class="field-wrap">
+            <label>
+              Email Address<span class="req">*</span>
+            </label>
+            <input type="email"required autocomplete="off"/>
+          </div>
+          
+          <div class="field-wrap">
+            <label>
+              Password<span class="req">*</span>
+            </label>
+            <input type="password"required autocomplete="off"/>
+          </div>
+          
+          <p class="forgot"><a href="#">Forgot Password?</a></p>
+          
+          <button class="button button-block"/>Log In</button>
+          
+          </form>
+
+        </div>
+        
+      </div><!-- tab-content -->
+      
+</div> <!-- /form -->
+
+	<footer>
+
+		<section class="parallax footer-top" data-url="images/parallax3.jpg" style="background-image: url(images/parallax4.jpg)">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-4">
+						<h3>Sign up for updates</h3>
+						<form id="subscribe-form" class="subscribe-form">
+							<label class="name">
+								<input type="text" value="Name"/>
+								<span class="error">*Invalid name.</span>
+							</label>
+							<label class="email">
+								<input type="email" value="Email">
+								<span class="error">*Invalid email.</span>
+								<span class="success">Subscription request sent!</span>
+							</label>
+							<a data-type="submit" href="#">Sign up</a>
+						</form>
+					</div>
+					<div class="col-xs-12 col-sm-offset-1 col-sm-3">
+						<h3>Find us</h3>
+						<address class="addr">
+							<p>8901 Marmora Road<br>Glasgow, DO4 89GR.</p>
+							<dl>
+								<dt>Freephone:</dt>
+								<dd><a href="callto:#">+1 800 559 6580</a></dd>
+							</dl>
+							<dl>
+								<dt>Telephone:</dt>
+								<dd><a href="callto:#">+1 959 603 6035</a></dd>
+							</dl>
+							<dl>
+								<dt>FAX:</dt>
+								<dd><a href="callto:#">+1 800 889 9898</a></dd>
+							</dl>
+							<p class="addr_email">E-mail: <a href="/cdn-cgi/l/email-protection#2605"><span class="__cf_email__" data-cfemail="731e121a1f3317161e1c1f1a1d185d1c0114">[email&#160;protected]</span><script data-cfhash='f9e31' type="text/javascript">/* <![CDATA[ */!function(t,e,r,n,c,a,p){try{t=document.currentScript||function(){for(t=document.getElementsByTagName('script'),e=t.length;e--;)if(t[e].getAttribute('data-cfhash'))return t[e]}();if(t&&(c=t.previousSibling)){p=t.parentNode;if(a=c.getAttribute('data-cfemail')){for(e='',r='0x'+a.substr(0,2)|0,n=2;a.length-n;n+=2)e+='%'+('0'+('0x'+a.substr(n,2)^r).toString(16)).slice(-2);p.replaceChild(document.createTextNode(decodeURIComponent(e)),c)}p.removeChild(t)}}catch(u){}}()/* ]]> */</script></a></p>
+						</address>
+					</div>
+					<div class="col-xs-12 col-sm-4">
+						<h3>Keep in touch</h3>
+						<ul class="social-list">
+							<li><a href="#"><span class="fa fa-google-plus"></span></a></li>
+							<li><a href="#"><span class="fa fa-twitter"></span></a></li>
+							<li><a href="#"><span class="fa fa-facebook"></span></a></li>
+							<li><a href="#"><span class="fa fa-pinterest"></span></a></li>
+							<li><a href="#"><span class="fa fa-linkedin"></span></a></li>
+						</ul>
+
+					</div>
+				</div>
+			</div>
+
+		</section>
+
+	</footer>
+	</div>
+<script>
+$('.form').find('input, textarea').on('keyup blur focus', function (e) {
+  
+  var $this = $(this),
+      label = $this.prev('label');
+
+    if (e.type === 'keyup') {
+      if ($this.val() === '') {
+          label.removeClass('active highlight');
+        } else {
+          label.addClass('active highlight');
+        }
+    } else if (e.type === 'blur') {
+      if( $this.val() === '' ) {
+        label.removeClass('active highlight'); 
+      } else {
+        label.removeClass('highlight');   
+      }   
+    } else if (e.type === 'focus') {
+      
+      if( $this.val() === '' ) {
+        label.removeClass('highlight'); 
+      } 
+      else if( $this.val() !== '' ) {
+        label.addClass('highlight');
+      }
+    }
+
+});
+
+$('.tab a').on('click', function (e) {
+  
+  e.preventDefault();
+  
+  $(this).parent().addClass('active');
+  $(this).parent().siblings().removeClass('active');
+  
+  target = $(this).attr('href');
+
+  $('.tab-content > div').not(target).hide();
+  
+  $(target).fadeIn(600);
+  
+});
+</script>
+</body>
+</html>
